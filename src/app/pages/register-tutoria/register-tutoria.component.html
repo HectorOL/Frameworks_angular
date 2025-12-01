@@ -1,0 +1,39 @@
+<div class="auth-page">
+  <div class="form-container">
+    <h2>Crear Nueva Tutoría</h2>
+    <form (ngSubmit)="addTutoria()">
+      
+      <div class="input-group">
+        <label for="tema_tutoria">Tema de la Tutoría</label>
+        <input type="text" id="tema_tutoria" [(ngModel)]="tutoria.tema_tutoria" name="tema_tutoria" required>
+      </div>
+      
+      <div class="input-group">
+        <label for="detalles">Detalles y Requisitos</label>
+        <textarea id="detalles" [(ngModel)]="tutoria.detalles" name="detalles" required rows="3"></textarea>
+      </div>
+      
+      <div class="input-group">
+        <label for="fecha">Fecha</label>
+        <input type="date" id="fecha" [(ngModel)]="tutoria.fecha" name="fecha" required [min]="today">
+      </div>
+      
+      <div class="input-group">
+        <label for="hora_inicio">Hora de Inicio</label>
+        <input type="time" id="hora_inicio" [(ngModel)]="tutoria.hora_inicio" name="hora_inicio" required>
+      </div>
+      
+      <div class="input-group">
+        <label for="hora_fin">Hora de Fin</label>
+        <input type="time" id="hora_fin" [(ngModel)]="tutoria.hora_fin" name="hora_fin" required>
+      </div>
+      
+      <div class="input-group">
+        <label for="salon">Salón o Lugar</label>
+        <input type="text" id="salon" [(ngModel)]="tutoria.salon" name="salon" required>
+      </div>
+      
+      <button type="submit" class="form-button">Publicar Tutoría</button>
+    </form>
+  </div>
+</div>

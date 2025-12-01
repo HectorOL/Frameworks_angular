@@ -1,0 +1,73 @@
+.main-header {
+  background-color: var(--card-dark-transparent);
+  backdrop-filter: blur(10px);
+  padding: 1.25rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.main-header nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--text-light);
+  text-decoration: none;
+  transition: transform 0.3s ease;
+}
+.logo span { color: var(--accent-blue); }
+.logo:hover { transform: scale(1.02); }
+
+.nav-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--text-muted);
+  font-weight: 500;
+  padding: 0.5rem 0;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  position: relative;
+  background: none;
+  border-radius: 6px;
+}
+
+.nav-links a:hover, .nav-links a.active {
+  color: var(--text-light);
+}
+
+.nav-links a.nav-button {
+  background-color: var(--accent-blue);
+  color: var(--text-light);
+  font-weight: 600;
+  padding: 0.6rem 1.25rem;
+  border-radius: 8px;
+}
+.nav-links a.nav-button:hover {
+  background-color: var(--accent-blue-hover);
+  transform: translateY(-2px);
+}
+
+.logout-link {
+  color: var(--accent-red) !important;
+  border: 1px solid var(--accent-red);
+  padding: 0.6rem 1rem !important;
+  border-radius: 8px;
+}
+.logout-link:hover {
+  background-color: rgba(220, 53, 69, 0.1);
+  transform: translateY(-2px);
+}

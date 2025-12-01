@@ -1,0 +1,23 @@
+<div class="auth-page">
+  <div class="form-container">
+    <h2>Bienvenido de Vuelta</h2>
+    
+    <form (ngSubmit)="handleLogin()">
+      <div class="input-group">
+        <label for="no_control">Número de control</label>
+        <input type="text" id="no_control" [(ngModel)]="noControl" name="noControl" required pattern="[0-9]*" maxlength="8">
+      </div>
+      
+      <div class="input-group">
+        <label for="contrasena">Contraseña</label>
+        <input type="password" id="contrasena" [(ngModel)]="contrasena" name="contrasena" required>
+      </div>
+      
+      <button type="submit" class="form-button">Entrar</button>
+      
+      <p class="form-switch">
+        ¿No tienes cuenta? <a routerLink="/register">Regístrate</a>
+      </p>
+    </form>
+  </div>
+</div>

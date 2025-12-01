@@ -1,0 +1,60 @@
+<div class="container dashboard-grid">
+  <aside class="left-column">
+    
+    <!-- MI PERFIL -->
+    <section class="card profile-card">
+      <h2>Mi Perfil</h2>
+      
+      <!-- Usamos ? para evitar errores si es null -->
+      <div *ngIf="tutor">
+        <p><strong>ID:</strong> {{ tutor?.id_tutor }}</p>
+        <p><strong>Nombre:</strong> {{ tutor?.nombre }} {{ tutor?.apellido }}</p>
+        <p><strong>Semestre:</strong> {{ tutor?.semestre }}</p>
+      </div>
+
+      <!-- Mensaje si no carga el perfil -->
+      <div *ngIf="!tutor">
+        <p style="color: yellow">Cargando perfil...</p>
+      </div>
+
+      <a routerLink="/register-tutoria" class="action-button-create">✚ Crear Tutoría</a>
+    </section>
+    
+    <!-- DETALLES DEL ALUMNO (Condicional) -->
+    <section class="card details-section" *ngIf="selectedTutorado">
+      <h3>Detalles del Alumno</h3>
+      <p><strong>ID Alumno:</strong> {{ selectedTutorado.id_tutorado }}</p>
+      <p><strong>Nombre:</strong> {{ selectedTutorado.nombre }} {{ selectedTutorado.apellido }}</p>
+      <p><strong>Semestre:</strong> {{ selectedTutorado.semestre }}</p>
+      <p><strong>ID Carrera:</strong> {{ selectedTutorado.id_carrera }}</p>
+    </section>
+    
+  </aside>
+  
+  <div class="right-column">
+    <!-- MIS TUTORÍAS OFRECIDAS -->
+    <section class="card offers-section">
+      <h2>Mis Tutorías Ofrecidas</h2>
+      <div class="tutoring-list">
+        
+        <p *ngIf="!tutorias || tutorias.length === 0">
+          Aún no has creado ninguna oferta de tutoría.
+        </p>
+        
+        <!-- Iteración de tarjetas -->
+        <app-tutoria-card 
+          *ngFor="let oferta of tutorias" 
+          [tutoria]="oferta"
+          (click)="mostrarInfoTutorado(oferta)">
+          
+          <p>
+            <strong>Estado:</strong> 
+            {{ (oferta.tutorados && oferta.tutorados.length > 0) ? 'Ocupado' : 'Libre' }}
+          </p>
+
+        </app-tutoria-card>
+
+      </div>
+    </section>
+  </div>
+</div>

@@ -1,0 +1,25 @@
+<header class="main-header" *ngIf="!isAuthPage">
+  <nav class="container">
+    <a routerLink="/" class="logo">
+      Conecta<span>Tutor</span> 🎓
+    </a>
+    
+    <ul class="nav-links">
+      <!-- Home Page Links -->
+      <ng-container *ngIf="isHomePage">
+        <li><a routerLink="/login" routerLinkActive="active">Iniciar Sesión</a></li>
+        <li><a routerLink="/register" class="nav-button">Regístrate</a></li>
+      </ng-container>
+
+      <!-- Dashboard Links -->
+      <ng-container *ngIf="isTutorDashboard || isTutoradoDashboard">
+        <li><button (click)="logout()" class="logout-link">Cerrar Sesión</button></li>
+      </ng-container>
+
+      <!-- Register Tutoria Links -->
+      <ng-container *ngIf="isRegisterTutoria">
+        <li><a routerLink="/dashboard/tutor">Volver al Panel</a></li>
+      </ng-container>
+    </ul>
+  </nav>
+</header>

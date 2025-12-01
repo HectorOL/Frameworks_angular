@@ -1,0 +1,70 @@
+.auth-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 4rem 1.5rem;
+    min-height: calc(90vh - 80px);
+    background-color: var(--background-dark);
+}
+
+.form-container {
+    background: var(--card-dark);
+    padding: 2.5rem;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 450px;
+    border: 1px solid var(--border-color);
+    animation: fadeInSlideUp 0.8s ease-out;
+}
+
+.input-group {
+    margin-bottom: 1.75rem;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--text-muted);
+}
+
+.input-group input {
+    width: 100%;
+    padding: 14px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    background-color: var(--background-dark);
+    color: var(--text-light);
+    box-sizing: border-box;
+}
+
+.form-button {
+    width: 100%;
+    padding: 1rem;
+    background-color: var(--accent-blue);
+    color: var(--text-light);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.form-switch {
+    text-align: center;
+    margin-top: 1.5rem;
+    color: var(--text-muted);
+}
+
+.form-switch a {
+    color: var(--accent-blue);
+}
+
+@keyframes fadeInSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

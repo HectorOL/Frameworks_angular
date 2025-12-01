@@ -1,0 +1,89 @@
+<div class="container dashboard-grid">
+  <aside class="left-column">
+    
+    <!-- PERFIL -->
+    <section class="card profile-card">
+      <h2>Mi Perfil</h2>
+      <!-- Verificación segura -->
+      <div *ngIf="tutorado">
+        <p><strong>ID:</strong> {{ tutorado?.id_tutorado }}</p>
+        <p><strong>Nombre:</strong> {{ tutorado?.nombre }} {{ tutorado?.apellido }}</p>
+        <p><strong>Semestre:</strong> {{ tutorado?.semestre }}</p>
+      </div>
+      <div *ngIf="!tutorado">
+        <p style="color: yellow">Cargando datos...</p>
+      </div>
+    </section>
+
+    <!-- MIS TUTORÍAS (INSCRITAS) -->
+    <section class="card my-tutoring-section">
+      <h2>Mis Tutorías</h2>
+      <div class="tutoring-list">
+        
+        <p *ngIf="!tutoriasTutorado || tutoriasTutorado.length === 0">
+          No estás inscrito en ninguna tutoría.
+        </p>
+
+        <app-tutoria-card *ngFor="let tutoria of tutoriasTutorado" [tutoria]="tutoria">
+          
+          <button *ngIf="haPasado(tutoria) && !tutoria.calificado"
+                  (click)="abrirModalCalificacion(tutoria)"
+                  class="action-button rate-button">
+            Calificar
+          </button>
+          
+          <button *ngIf="tutoria.calificado" class="action-button" disabled>
+            Calificado
+          </button>
+
+        </app-tutoria-card>
+      </div>
+    </section>
+  </aside>
+
+  <div class="right-column">
+    <!-- OFERTAS DISPONIBLES -->
+    <section class="card offers-section">
+      <h2>Tutorías Disponibles</h2>
+
+      <div *ngIf="carrerasDisponibles.length === 0">
+        <p>No hay nuevas tutorías disponibles en este momento.</p>
+      </div>
+
+      <div *ngIf="carrerasDisponibles.length > 0">
+        <!-- TABS -->
+        <div class="tabs-header">
+          <button *ngFor="let carrera of carrerasDisponibles"
+                  (click)="setActiveTab(carrera)"
+                  [class.active]="activeTab === carrera">
+            {{ carrera }}
+          </button>
+        </div>
+
+        <!-- LISTA DE OFERTAS POR CARRERA -->
+        <div class="tutoring-list">
+          <!-- Usamos safe navigation por si acaso -->
+          <ng-container *ngIf="tutoriasPorCarrera[activeTab]">
+            <app-tutoria-card *ngFor="let tutoria of tutoriasPorCarrera[activeTab]" [tutoria]="tutoria">
+              
+              <button (click)="suscribirse(tutoria.id_oferta)"
+                      class="action-button subscribe-button"
+                      [disabled]="subscribingId === tutoria.id_oferta">
+                {{ subscribingId === tutoria.id_oferta ? "Procesando..." : "Suscribirse" }}
+              </button>
+
+            </app-tutoria-card>
+          </ng-container>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- MODAL DE CALIFICACIÓN -->
+  <app-rating-modal
+    [isVisible]="isModalVisible"
+    [temaTutoria]="tutoriaAcalificar?.tema_tutoria"
+    (close)="cerrarModalCalificacion()"
+    (submitRating)="enviarCalificacion($event)">
+  </app-rating-modal>
+</div>

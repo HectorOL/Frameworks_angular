@@ -1,0 +1,25 @@
+<div class="offer-card" [class.ocupado]="isOcupado">
+  <div class="card-content">
+    <h3>{{ tutoria.tema_tutoria }}</h3>
+    
+    <p *ngIf="tutoria.nombre_tutor" class="tutor-name">
+      <strong>Tutor:</strong> {{ tutoria.nombre_tutor }}
+    </p>
+    
+    <div class="info-group">
+      <p><strong>Fecha:</strong> {{ tutoria.fecha }}</p>
+      <p>
+        <strong>Hora:</strong> {{ tutoria.hora_inicio | slice:0:5 }} - {{ tutoria.hora_fin | slice:0:5 }}
+      </p>
+    </div>
+    <p><strong>Salón:</strong> {{ tutoria.salon }}</p>
+    
+    <p *ngIf="tutoria.detalles" class="details">
+      <strong>Detalles:</strong> {{ tutoria.detalles }}
+    </p>
+  </div>
+
+  <div class="card-actions">
+    <ng-content></ng-content>
+  </div>
+</div>

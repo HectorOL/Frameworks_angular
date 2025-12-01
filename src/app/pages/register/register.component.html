@@ -1,0 +1,59 @@
+<div class="auth-page">
+  <div class="form-container">
+    <h2>Crea tu Cuenta</h2>
+    <form (ngSubmit)="handleRegister()">
+      
+      <div class="input-group">
+        <label for="no_control">Número de control</label>
+        <input type="text" id="no_control" [(ngModel)]="formData.no_control" name="no_control" required pattern="[0-9]*" maxlength="8">
+      </div>
+      
+      <div class="input-group">
+        <label for="nombre">Nombre(s)</label>
+        <input type="text" id="nombre" [(ngModel)]="formData.nombre" name="nombre" required pattern="[a-zA-Z\s]+">
+      </div>
+      
+      <div class="input-group">
+        <label for="apellido">Apellido(s)</label>
+        <input type="text" id="apellido" [(ngModel)]="formData.apellido" name="apellido" required pattern="[a-zA-Z\s]+">
+      </div>
+      
+      <div class="input-group">
+        <label for="semestre">Semestre</label>
+        <input type="number" id="semestre" [(ngModel)]="formData.semestre" name="semestre" min="1" max="14" required>
+      </div>
+      
+      <div class="input-group">
+        <label for="carrera">Carrera:</label>
+        <select id="carrera" [(ngModel)]="formData.carrera" name="carrera" required>
+          <option value="" disabled>Seleccione una carrera</option>
+          <option *ngFor="let carrera of carreras" [value]="carrera.id_carrera">
+            {{ carrera.nombre }}
+          </option>
+        </select>
+      </div>
+      
+      <div class="input-group">
+        <label for="contrasena">Contraseña</label>
+        <input type="password" id="contrasena" [(ngModel)]="formData.contrasena" name="contrasena" required>
+      </div>
+      
+      <div class="input-group">
+        <label for="confirmar_contrasena">Confirmar Contraseña</label>
+        <input type="password" id="confirmar_contrasena" [(ngModel)]="confirmarContrasena" name="confirmarContrasena" required>
+      </div>
+      
+      <div class="input-group switch-group">
+        <label for="esTutor">Quiero ser tutor</label>
+        <input type="checkbox" id="esTutor" [(ngModel)]="esTutor" name="esTutor">
+      </div>
+      
+      <button type="submit" class="form-button">Registrarme</button>
+      
+      <p class="form-switch">
+        ¿Ya tienes una cuenta? <a routerLink="/login">Inicia Sesión</a>
+      </p>
+      
+    </form>
+  </div>
+</div>

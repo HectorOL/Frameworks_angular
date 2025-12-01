@@ -1,0 +1,19 @@
+<div class="modal-overlay" [class.visible]="isVisible" (click)="onOverlayClick($event)">
+  <div class="modal">
+    <button class="close-button" (click)="closeModal()">&times;</button>
+    
+    <h2>Calificar Tutoría</h2>
+    <p><strong>Tutoría:</strong> <span>{{ temaTutoria }}</span></p>
+    
+    <div class="star-rating">
+      <span *ngFor="let value of starValues"
+            class="star"
+            [class.selected]="value <= currentRating"
+            (click)="setRating(value)">
+        &#9733;
+      </span>
+    </div>
+    
+    <button class="action-button" (click)="submit()">Enviar Calificación</button>
+  </div>
+</div>

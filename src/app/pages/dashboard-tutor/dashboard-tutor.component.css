@@ -1,0 +1,74 @@
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 2rem 0;
+    align-items: start;
+}
+
+@media (min-width: 992px) {
+    .dashboard-grid {
+        grid-template-columns: 300px 1fr;
+    }
+}
+
+.left-column {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    position: sticky;
+    top: 100px;
+}
+
+.card {
+    background: var(--card-dark);
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    animation: fadeInSlideUp 0.7s ease-out 0.2s forwards;
+}
+
+.card h2 {
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 1rem;
+    margin-top: 0;
+}
+
+.profile-card p,
+.details-section p {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--background-dark);
+    padding: 0.5rem 0;
+}
+
+.action-button-create {
+    display: block;
+    width: 60%;
+    margin: auto;
+    text-align: center;
+    padding: 0.8rem 1rem;
+    background-color: var(--accent-green);
+    color: var(--text-light);
+    text-decoration: none;
+    border-radius: 8px;
+    margin-top: 1.5rem;
+}
+
+.tutoring-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+@keyframes fadeInSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

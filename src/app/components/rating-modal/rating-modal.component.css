@@ -1,0 +1,70 @@
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(8px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  opacity: 0; visibility: hidden;
+  transition: opacity 0.3s, visibility 0.3s;
+}
+
+.modal-overlay.visible { opacity: 1; visibility: visible; }
+
+.modal {
+  background: var(--card-dark);
+  padding: 2.5rem;
+  border-radius: 12px;
+  width: 90%; max-width: 500px;
+  position: relative;
+  text-align: center;
+  border: 1px solid var(--border-color);
+  transform: scale(0.95);
+  transition: transform 0.3s ease-out;
+}
+.modal-overlay.visible .modal { transform: scale(1); }
+
+.close-button {
+  position: absolute; top: 15px; right: 20px;
+  background: none; border: none;
+  font-size: 2rem; cursor: pointer;
+  color: var(--text-muted);
+}
+.close-button:hover { color: var(--text-light); transform: scale(1.1); }
+
+h2 { margin-top: 0; margin-bottom: 1.5rem; color: var(--text-light); }
+p { font-size: 1rem; color: var(--text-muted); margin-bottom: 1.5rem; }
+p span { color: var(--text-light); font-weight: 600; display: block; font-size: 1.1rem; }
+
+.star-rating {
+  display: inline-flex;
+  flex-direction: row-reverse;
+  font-size: 3rem;
+  margin: 1.5rem 0;
+}
+
+.star {
+  cursor: pointer;
+  color: var(--border-color);
+  transition: color 0.2s;
+}
+
+.star:hover, .star:hover ~ .star,
+.star.selected, .star.selected ~ .star {
+  color: var(--accent-yellow);
+}
+
+.action-button {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  margin-top: 1.5rem;
+  background-color: var(--accent-yellow);
+  color: var(--background-dark);
+  cursor: pointer;
+}
